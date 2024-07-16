@@ -90,7 +90,7 @@ void setupMapping() {
         mapping_size = 2048 * 1024 * 1024u;
 
     mapping = mmap(NULL, mapping_size, PROT_READ | PROT_WRITE,
-                   MAP_POPULATE | MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
+                   MAP_POPULATE | MAP_ANONYMOUS | MAP_PRIVATE | MAP_HUGETLB | (30 << MAP_HUGE_SHIFT), -1, 0);
     assert(mapping != (void *) -1);
 
     logDebug("%s", "Initialize large memory block...\n");
